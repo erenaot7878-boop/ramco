@@ -1,0 +1,325 @@
+@import "@fontsource/cormorant-garamond/500.css";
+@import "@fontsource/cormorant-garamond/500-italic.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/caveat/500.css";
+@import "tailwindcss";
+
+:root {
+  /* Palette */
+  --color-bg: #f3f9f4;
+  --color-grid-line: rgba(20, 52, 31, 0.04);
+  --color-glow-green: rgba(164, 214, 179, 0.34);
+  --color-card: #fbfdfb;
+  --color-card-border: rgba(255, 255, 255, 0.85);
+  --color-divider: rgba(20, 52, 31, 0.09);
+
+  /* Frosted glass */
+  --color-glass-bg: rgba(255, 255, 255, 0.62);
+  --color-glass-nav: rgba(255, 255, 255, 0.74);
+  --color-glass-border: rgba(255, 255, 255, 0.92);
+
+  /* Primary & Text */
+  --color-primary: #14341f;
+  --color-primary-hover: #1d472b;
+  --color-ink: #122318;
+  --color-ink-muted: #4a5d50;
+  --color-white: #ffffff;
+
+  /* Pastel Card Tints (one family per card) */
+  --color-pastel-sage-from: #e2f1e6;
+  --color-pastel-sage-to: #f4faf5;
+  --color-pastel-butter-from: #faf1d6;
+  --color-pastel-butter-to: #fdfaf0;
+  --color-pastel-sky-from: #e3ebf9;
+  --color-pastel-sky-to: #f4f7fd;
+
+  /* Radii */
+  --radius-card: 32px;
+  --radius-media: 24px;
+  --radius-input: 16px;
+  --radius-pill: 9999px;
+
+  /* Diffused Layered Shadows */
+  --shadow-card: 0 20px 60px rgba(20, 52, 31, 0.08), 0 4px 16px rgba(20, 52, 31, 0.03);
+  --shadow-card-hover: 0 28px 72px rgba(20, 52, 31, 0.12), 0 8px 20px rgba(20, 52, 31, 0.05);
+  --shadow-glass: 0 12px 32px rgba(20, 52, 31, 0.1);
+  --shadow-nav: 0 14px 40px rgba(20, 52, 31, 0.08);
+  --shadow-pill: 0 10px 24px rgba(20, 52, 31, 0.18);
+
+  /* Typography */
+  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-hand: "Caveat", cursive;
+}
+
+@layer base {
+  html {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    background-image:
+      linear-gradient(to right, var(--color-grid-line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--color-grid-line) 1px, transparent 1px);
+    background-size: 40px 40px;
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  h1,
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    line-height: 1.1;
+    text-wrap: balance;
+  }
+
+  h3,
+  h4 {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.28;
+  }
+
+  ::selection {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .font-sans {
+    font-family: var(--font-sans);
+  }
+
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-hand {
+    font-family: var(--font-hand);
+  }
+
+  .retreat-card {
+    background-color: var(--color-card);
+    border: 1px solid var(--color-card-border);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+  }
+
+  .retreat-card-interactive {
+    background-color: var(--color-card);
+    border: 1px solid var(--color-card-border);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 280ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .retreat-card-interactive:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .glass-chip {
+    background-color: var(--color-glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--color-glass-border);
+    border-radius: var(--radius-pill);
+    box-shadow: var(--shadow-glass);
+  }
+
+  .btn-primary-pill {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-radius: var(--radius-pill);
+    box-shadow: var(--shadow-pill);
+    transition: background-color 200ms ease, transform 160ms ease, box-shadow 200ms ease;
+  }
+
+  .btn-primary-pill:hover {
+    background-color: var(--color-primary-hover);
+  }
+
+  .btn-primary-pill:active {
+    transform: scale(0.98) translateY(1px);
+  }
+
+  .btn-ghost-pill {
+    background-color: var(--color-glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: var(--color-ink);
+    border: 1px solid var(--color-divider);
+    border-radius: var(--radius-pill);
+    transition: background-color 200ms ease, border-color 200ms ease, transform 160ms ease;
+  }
+
+  .btn-ghost-pill:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-color: rgba(20, 52, 31, 0.22);
+  }
+
+  .btn-ghost-pill:active {
+    transform: scale(0.98) translateY(1px);
+  }
+
+  .pastel-sage {
+    background: linear-gradient(
+      145deg,
+      var(--color-pastel-sage-from) 0%,
+      var(--color-pastel-sage-to) 100%
+    );
+  }
+
+  .pastel-butter {
+    background: linear-gradient(
+      145deg,
+      var(--color-pastel-butter-from) 0%,
+      var(--color-pastel-butter-to) 100%
+    );
+  }
+
+  .pastel-sky {
+    background: linear-gradient(
+      145deg,
+      var(--color-pastel-sky-from) 0%,
+      var(--color-pastel-sky-to) 100%
+    );
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes hero-ken-burns {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.06);
+  }
+}
+
+@keyframes hero-fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float-drift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes location-pin-pulse {
+  0% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2.35);
+  }
+}
+
+@keyframes location-tab-in {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-ken-burns {
+  animation: hero-ken-burns 20s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.hero-fade-up {
+  animation: hero-fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.float-drift {
+  animation: float-drift 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+.float-drift-delayed {
+  animation: float-drift 6s ease-in-out 2s infinite;
+  will-change: transform;
+}
+
+.float-drift-late {
+  animation: float-drift 6s ease-in-out 3.5s infinite;
+  will-change: transform;
+}
+
+.location-pin-pulse {
+  animation: location-pin-pulse 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+.location-tab-in {
+  animation: location-tab-in 240ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .hero-ken-burns,
+  .hero-fade-up,
+  .float-drift,
+  .float-drift-delayed,
+  .float-drift-late,
+  .location-pin-pulse,
+  .location-tab-in {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

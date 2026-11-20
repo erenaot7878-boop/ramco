@@ -1,0 +1,6 @@
+{
+  "name": "SAMCO RESIDENCY",
+  "description": "An independent resort-style stay in Munnar, Kerala offering air-conditioned rooms, a backside viewpoint, campfire evenings, and local experiences.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
